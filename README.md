@@ -92,6 +92,20 @@ lsmod | grep mt7902
 nmcli device wifi list
 ```
 
+#### 7. If Wi-Fi isn't working try to copy mt7902e driver to mediatek dir:
+```bash
+sudo cp /lib/firmware/mediatek/mt7902e/* /lib/firmware/mediatek/
+
+# update image of initramfs
+sudo update-initramfs -u
+
+# Reboot the driver module
+sudo modprobe -r mt7902e
+sudo modprobe mt7902e
+# OR REBOOT PC
+sudo reboot
+```
+
 ### Part 2: Bluetooth Driver Installation
 
 ⚠️ **WARNING:** The Bluetooth driver is in a separate branch (`bluetooth_backport`). Install it independently from the Wi-Fi driver.
